@@ -5,13 +5,13 @@
 
 #include "att.h"
 
-#define SQR(X) 			printf(" ==> " #X "의 제곱은 %d입니다.\n", ((X)*(X)))
+#define SQR(X) 			printf("==> The square of " #X " is %d.\n", ((X)*(X)))
 #define PRT(ss)    		printf(#ss)
 
 
 #define INT_i(n)        int i##n = n;
-#define PRINT(n)        printf("i%d = %d\n", n, i##n)
-#define SUM(res, n)     ((res) += (i##n))
+#define SUM(res, n)     ((res) += (i##n)); \
+						printf(" i%d = (%d) => SUM: %d \n", n, i##n, res);
 
 
 
@@ -23,7 +23,7 @@
 
 
 
-int 	main(void)
+int 	main(int argc, char *argv[])
 {
 char    c_a=0x7d;
 int 	i_b=20;
@@ -45,39 +45,39 @@ int 	ii, jj;
 
 
 #if TEST1
-{
-int 	i=0;
-int     bb5;
-int     a=9;
-int 	res=0;
-
-	i = 033;
-	printf(" mul = %d / %d \n", MUL1(2,2), MUL2(2+1, 2+1) );
-
-	PRT(THIS IS TEST CODE);
-
-	printf("asadasd" "AAAAAAAAAAAAAAAAAAAA \n"  );
-//	aa = 10;
-	bb = 55;
-
-	if( ++i ) printf("i value =%d, aa:%d,  bb:%d\n", i, aa, bb);
-
-	printf(" ii =%d, jj=%d \n", ii, jj);
-
-	printf(" ============== %d \n", MY_MACRO_2(3,5));
-
-	SQR(4);
-
-
-
-	for(i=0; i<10; i++)
 	{
-		INT_i(i);
-		PRINT(i);
-		SUM(res,i);
-	}
+	int 	i=0;
+	int     bb5;
+	int     a=9;
+	int 	res=0;
 
-}
+		i = 033;
+
+		printf("mul = %d / %d \n", MUL1(2,2), MUL2(2+1, 2+1) );
+
+		PRT(THIS IS TEST CODE);
+
+
+		bb = 55;
+
+		if( ++i ) printf("i value =%d, aa:%d,  bb:%d\n", i, aa, bb);
+
+		printf("ii =%d, jj=%d \n", ii, jj);
+
+		printf("============== %d \n", MY_MACRO_2(3,5));
+
+		SQR(4);
+		SQR(9);
+
+
+
+		for(i=0; i<10; i++)
+		{
+			INT_i(i);
+			SUM(res,i);
+		}
+
+	}
 #endif
 
 #if (TEST2)
@@ -132,7 +132,6 @@ int 	res=0;
 	printf(" i_b = %d \n", i_b);
 #endif
 
-#define TEST7 	1
 #if TEST7
 	{
 	FILE	*inp=NULL, *out=NULL;
@@ -259,6 +258,498 @@ int 	res=0;
 	}
 #endif
 
+
+
+
+#if TEST11
+	int opt;
+	int option_index = 0;
+	char str_crcAdd[MAX_CHARS+1];
+	char str_mjd[MAX_CHARS+1];
+	char str_ignore[MAX_CHARS+1];
+	char str_float[MAX_CHARS+1];
+	char str_hash[MAX_CHARS+1];
+	char str_address[MAX_CHARS+1];
+
+	while( EOF != (opt = getopt_long(argc, argv, strOpt, long_options, &option_index)) ) 
+	{
+     
+		switch(opt) 
+		{ 
+
+			case 'J' : /// 2014.06.27,  Modified Julian Date--
+
+				if(optarg) 
+				{
+					memcpy(str_mjd, optarg, MAX_CHARS);
+
+					if( 0==strcasecmp(str_mjd, "test" )  )
+					{
+					}
+					else if( 0==strcasecmp(str_mjd, "current" ) )  
+					{
+					}
+					else if( 0==strcasecmp(str_mjd, "date" ) )  
+					{
+					}
+					else
+					{
+						printf("\nMJD>> WARNING:Wrong option. --mjd [date|mjd]. Check option.\n");
+
+						exit(0);
+						return 0;
+					}
+				}
+				else
+				{
+					printf("\nMJD>> WARNING:option error. check option --mjd [date|mjd]. \r\n");
+
+					exit(0);
+					return 0;
+				}
+				break;
+
+			case 'M' : /// 2014.06.27, MD5/SHA1/SHA256/SHA384/SHA512 Checksum
+				if(optarg) 
+				{
+					if( 0==strcasecmp(str_hash, "MD5") )
+					{
+					}
+					else if( 0==strcasecmp(str_hash, "SHA1") )
+					{
+					}
+					else if( 0==strcasecmp(str_hash, "SHA224") )
+					{
+					}
+					else if( 0==strcasecmp(str_hash, "SHA256") )
+					{
+					}
+					else if( 0==strcasecmp(str_hash, "SHA384") )
+					{
+					}
+					else if( 0==strcasecmp(str_hash, "SHA512") )
+					{
+					}
+					else if( 0==strcasecmp(str_hash, "MD4") )
+					{
+					}
+					else if( 0==strcasecmp(str_hash, "MD2") )
+					{
+					}
+					else if( 0==strcasecmp(str_hash, "MD6") )
+					{
+					}
+					else if( 0==strcasecmp(str_hash, "crc16") )
+					{
+					}
+					else if( 0==strcasecmp(str_hash, "crc16ksc") )
+					{
+					}
+					else if( 0==strcasecmp(str_hash, "crc16c") )
+					{
+					}
+					else if( 0==strcasecmp(str_hash, "crc32") )
+					{
+					}
+					else if( 0==strcasecmp(str_hash, "crc64") )
+					{
+					}
+					else if( 0==strcasecmp(str_hash, "crc64isc") )
+					{
+					}
+					else
+					{
+
+						printf("\n\nWarning: -M or --checksum MD2|MD4|MD5|MD6 \n");
+						printf("                          SHA1|SHA224|SHA256|SHA384|SHA512 \n");
+						printf("                          SHA3-224|SHA3-256|SHA3-384|SHA3-512|SHAKE128|SHAKE256 \n");
+						printf("                          RipeMD128|RipeMD160 \n");
+						printf("                          crc16|crc16c|crc32|crc64|adler32 \n");
+						printf("                          CRC16|CRC16C|CRC32|CRC64|ADLER32 \n");
+
+						exit(0);
+						return 0;
+					}
+
+				}
+				break;
+
+
+
+			case 'g' : /* ignore inputfile and output file */
+
+				if(optarg) 
+				{
+					memcpy(str_ignore, optarg, sizeof(str_ignore) );
+				}
+
+				break;
+
+
+			case 'f' : /* convert float number to Hex-decial for using DR_GPS Trimble packet */
+				if(optarg) 
+				{
+					memcpy(str_float, optarg, MAX_CHARS );
+				}
+				else
+				{
+					printf("\n\n WARNING:wrong option --float [float number]. \r\n");
+
+					exit(0);	
+					return 0;
+				}
+				break;
+
+		    case 'h' : /* help */
+				if(optarg)
+				{
+
+				}
+
+				exit(0);
+				return 0;
+
+			case 'S': /* --startaddr : Starting Address hex2bin */
+
+				if(optarg) 
+				{
+					memcpy(str_address, optarg, MAX_CHARS);
+
+			        printf("\nHEX2BIN>> Start address : %s \n", str_address );
+				}
+				else
+				{
+					printf("\nHEX2BIN>> WARNING:wrong option --start [hexa value]. check option\r\n");
+
+					exit(0);
+					return 0;
+				}
+				break;
+
+			case 'e': /// elf 2 bin
+
+				break;
+
+		    case 'A': /* convert mot2bin -> Motorola FORMAT family --- */
+				printf("\n");
+				printf(">>Hex family type : MOTOROLA family");
+
+				break;
+				
+		    case 'L': /* convert intel2bin -> Intel FORMAT family --- */
+				printf("\n");
+				printf(">>Hex family type : Intel family");
+				break;
+
+		    case 'n': /* --alignword : Address Alignment Word -> Intel family only --- */
+
+
+				break;
+				
+			case 'P': // --padbyte
+
+				printf("padbyte \n");
+				break;
+
+			case 'E': // --endian
+				if(optarg) 
+				{}
+				else
+				{
+					printf("\n\n WARNING:wrong option --endian [little|big]. check option\r\n");
+			
+					exit(0);
+					return 0;
+				}
+				break;
+
+		    case 'k':  /* --allpadarea : fill Padbye in all empty area */
+
+				printf("\n");
+				printf(">>Fill Pad Byte   : Pad byte in empty ALL area of binary \n" );
+				break;
+
+			case 'Z': // --zeroforced
+
+				printf("\n");
+				printf(">>Address Forced  : Using ZERO addressing forced. \n");
+
+				break;
+
+		    case 'l': /* Hex2bin Max size - length */
+
+				if(optarg) 
+				{
+				}
+				else
+				{
+					printf("\n WARNING:wrong --length [hexa value] in converting --intel or --motorola. check option [%s] \n");
+
+					exit(0);
+					return 0;
+				}
+				break;
+
+			case 'R':
+
+				if(optarg) 
+				{
+				}
+				break;
+				
+		    case 'N': /* infotmation */
+				if(optarg) 
+				{
+				}
+				else
+				{
+					printf("\n\n WARNING:wrong option --nk [nb0 | none]. check option\r\n");
+
+					exit(0);
+					return 0;
+				}
+				break;
+			
+		    case 'I': /* infotmation */
+				if(optarg) 
+				{
+
+				}
+		        exit(0);
+		    	break;
+
+		    case 'F':
+
+				if(optarg) 
+				{
+				}
+				else
+				{
+					printf("\n\n WARNING:wrong option --fillsize [value]. check option\r\n");
+					exit(0);
+					return 0;
+				}
+		    	break;
+
+			case 'j': /* 2017.04.05, File merge */
+
+				if(optarg) 
+				{
+				}
+				else
+				{
+					printf("\n\n WARNING:wrong option --join [in hexa]. check option\r\n");
+
+					exit(0);
+					return 0;
+				}
+				break;
+
+
+		    case 'd': /* detach Header */
+
+		        break;
+
+	
+		    case 'b': /* Attach Header : 16 characters */
+				if(optarg) 
+				{
+				}
+				else
+				{
+					printf("\n\n WARNING:wrong option --board [string]. check option\r\n");
+
+					exit(0);
+					return 0;
+				}
+		        break;
+
+				
+		    case 'm': /* Attach Header : 16 characters */
+				if(optarg) 
+				{
+				}
+				else
+				{
+					printf("\n\n WARNING:wrong option --model [string]. check option\r\n");
+
+					exit(0);
+					return 0;
+				}
+		        break;
+		
+		    case 'c': /* Attach Header : 16 characters ; date / crc16/crc32/crc64/adler32 */
+				if( 0==strcasecmp(str_crcAdd, "crc16") )
+				{
+					printf("The %s is inserted as signed image.", str_crcAdd);
+				}
+				else if( 0==strcasecmp(str_crcAdd, "crc16ksc") )
+				{
+					printf("The %s is inserted as signed image.", str_crcAdd);
+				}
+				else if( 0==strcasecmp(str_crcAdd, "crc16c") )
+				{
+					printf("The %s is inserted as signed image.", str_crcAdd);
+				}
+				else if( 0==strcasecmp(str_crcAdd, "crc32") )
+				{
+					printf("The %s is inserted as signed image.", str_crcAdd);
+				}
+				else if( 0==strcasecmp(str_crcAdd, "crc64") )
+				{
+					printf("The %s is inserted as signed image.", str_crcAdd);
+				}
+				else if( 0==strcasecmp(str_crcAdd, "crc64isc") )
+				{
+					printf("The %s is inserted as signed image.", str_crcAdd);
+				}
+				else if( 0==strcasecmp(str_crcAdd, "adler32") ) 
+				{
+					printf("The %s is inserted as signed image.", str_crcAdd);
+				}	
+				else if( 0==strcasecmp(str_crcAdd, "joaat") ) 
+				{
+					printf("The %s is inserted as signed image.", str_crcAdd);
+				}
+				else if( 0==strcasecmp(str_crcAdd, "sha1") )	// SHA1
+				{
+					printf("The %s is inserted as signed image.", str_crcAdd);
+				}	
+				else if( 0==strcasecmp(str_crcAdd, "sha224") )	// SHA2-224
+				{
+					printf("The %s is inserted as signed image.", str_crcAdd);
+				}	
+				else if( 0==strcasecmp(str_crcAdd, "sha256") )  // SHA2-256
+				{
+					printf("The %s is inserted as signed image.", str_crcAdd);
+				}	
+				else if( 0==strcasecmp(str_crcAdd, "sha384") ) // SHA2-384
+				{
+					printf("The %s is inserted as signed image.", str_crcAdd);
+				}	
+				else if( 0==strcasecmp(str_crcAdd, "sha512") ) // SHA2-512
+				{
+					printf("The %s is inserted as signed image.", str_crcAdd);
+				}	
+				else if( 0==strcasecmp(str_crcAdd, "sha3-224") ) 
+				{
+					printf("The %s is inserted as signed image.", str_crcAdd);
+				}	
+				else if( 0==strcasecmp(str_crcAdd, "sha3-256") ) 
+				{
+					printf("The %s is inserted as signed image.", str_crcAdd);
+				}	
+				else if( 0==strcasecmp(str_crcAdd, "sha3-384") ) 
+				{
+					printf("The %s is inserted as signed image.", str_crcAdd);
+				}	
+				else if( 0==strcasecmp(str_crcAdd, "sha3-512") ) 
+				{
+					printf("The %s is inserted as signed image.", str_crcAdd);
+				}	
+				else if( 0==strcasecmp(str_crcAdd, "shake128") ) 
+				{
+					printf("The %s is inserted as signed image.", str_crcAdd);
+				}	
+				else if( 0==strcasecmp(str_crcAdd, "shake256") ) 
+				{
+					printf("The %s is inserted as signed image.", str_crcAdd);
+				}	
+				else if( 0==strcasecmp(str_crcAdd, "md5") ) // MD5
+				{
+					printf("The %s is inserted as signed image.", str_crcAdd);
+				}	
+				else if( 0==strcasecmp(str_crcAdd, "md6") ) // MD6
+				{
+					printf("The %s is inserted as signed image.", str_crcAdd);
+				}	
+				else if( 0==strcasecmp(str_crcAdd, "md2") ) // MD2
+				{
+					printf("The %s is inserted as signed image.", str_crcAdd);
+				}	
+				else if( 0==strcasecmp(str_crcAdd, "md4") ) // MD4
+				{
+					printf("The %s is inserted as signed image.", str_crcAdd);
+				}	
+				else
+				{
+					printf("\n\n WARNING:wrong option --cinfo [string]. check option\r\n");
+
+					exit(0);
+					return 0;
+				}
+		    	break;
+
+
+		    case 'v': /* Attach Header : 16 characters */
+
+				if(optarg) 
+				{
+					printf("\n\n[++ERROR++] Version Name length is too long.. Max Bytes\n\n"  );
+				}
+				else
+				{
+					printf("\n\n WARNING:wrong option --version [string]. check option\r\n");
+					exit(0); /// 2017.11.21
+
+					return 0;
+				}
+
+				break;
+		
+		    case 'i': /* input file name : 32 characters */
+				if(optarg) 
+				{
+				}
+				else
+				{
+					printf("\n\n[++ERROR++] Input file is NULL.  check option --input [filename]. \n\n" );
+					exit(0);
+					return 0;
+				}
+
+				break;
+		
+
+			case 'a': /* output file name : 32 characters -- append mode */
+
+
+
+		    case 'o': /* 32 characters  -- write mode */
+				
+				if(optarg) 
+				{
+				}
+				else
+				{
+					printf("\n\n[++ERROR++] Output file is NULL.  check option --output|--append [filename]. \n\n" );
+					exit(0);
+					return 0;
+				}				
+				break;
+
+		    case 'z': /// printf, verbos ---
+
+				printf("\n");
+
+		    	break;
+
+			default:
+				printf("\n\n");
+
+				exit(0);
+				return 0;
+				break;
+		}
+
+
+	}
+
+
+#endif
+
+
+	return 1;
 
 }
 
