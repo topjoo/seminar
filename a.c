@@ -51,6 +51,14 @@ int 	ii, jj;
 	int     a=9;
 	int 	res=0;
 
+
+		printf("+++ Feature +++++ \n");
+		printf("TEST1(%d), -TEST2(%d), -TEST3(%d), -TEST4(%d),  TEST7(%d), TEST11(%d) \n", TEST1, -TEST2, -TEST3, -TEST4,  TEST7, TEST11);
+		printf("TEST1*-TEST2=(%d) \n", TEST1 * -TEST2 );
+		printf("TEST1*-TEST3=(%d) \n", TEST1 * -TEST3 );
+
+
+
 		i = 033;
 
 		printf("mul = %d / %d \n", MUL1(2,2), MUL2(2+1, 2+1) );
