@@ -89,7 +89,7 @@ int 	ii, jj;
 #endif
 
 #if (TEST2)
-	printf("sizeof(char)=%d,  sizeof(int)=%d, sizeof(short)=%d, \nsizeof(array)=%d, sizeof(pointer)=%d, sizeof(iarry)=%d \n ", 
+	printf("sizeof(char)=%d,  sizeof(int)=%d, sizeof(short)=%d, \nsizeof(array)=%d, sizeof(pointer)=%d, sizeof(iarry)=%d \n", 
 				sizeof(char), sizeof(int), sizeof(short), sizeof(array), sizeof(pointer), sizeof(iarry) );
 #endif
 
@@ -293,12 +293,15 @@ int 	ii, jj;
 
 					if( 0==strcasecmp(str_mjd, "test" )  )
 					{
+						printf("***OPTION => [%s]  [%s]\n", str_mjd, optarg);
 					}
 					else if( 0==strcasecmp(str_mjd, "current" ) )  
 					{
+						printf("***OPTION => [%s]  [%s]\n", str_mjd, optarg);
 					}
 					else if( 0==strcasecmp(str_mjd, "date" ) )  
 					{
+						printf("***OPTION => [%s]  [%s]\n", str_mjd, optarg);
 					}
 					else
 					{
@@ -308,62 +311,36 @@ int 	ii, jj;
 						return 0;
 					}
 				}
-				else
-				{
-					printf("\nMJD>> WARNING:option error. check option --mjd [date|mjd]. \r\n");
-
-					exit(0);
-					return 0;
-				}
 				break;
 
 			case 'M' : /// 2014.06.27, MD5/SHA1/SHA256/SHA384/SHA512 Checksum
 				if(optarg) 
 				{
+					memcpy(str_hash, optarg, MAX_CHARS);
+
 					if( 0==strcasecmp(str_hash, "MD5") )
 					{
+						printf("***OPTION** => [%s]  [%s]\n", str_hash, optarg);
 					}
 					else if( 0==strcasecmp(str_hash, "SHA1") )
 					{
+						printf("***OPTION** => [%s]  [%s]\n", str_hash, optarg);
 					}
 					else if( 0==strcasecmp(str_hash, "SHA224") )
 					{
+						printf("***OPTION** => [%s]  [%s]\n", str_hash, optarg);
 					}
 					else if( 0==strcasecmp(str_hash, "SHA256") )
 					{
+						printf("***OPTION** => [%s]  [%s]\n", str_hash, optarg);
 					}
 					else if( 0==strcasecmp(str_hash, "SHA384") )
 					{
+						printf("***OPTION** => [%s]  [%s]\n", str_hash, optarg);
 					}
 					else if( 0==strcasecmp(str_hash, "SHA512") )
 					{
-					}
-					else if( 0==strcasecmp(str_hash, "MD4") )
-					{
-					}
-					else if( 0==strcasecmp(str_hash, "MD2") )
-					{
-					}
-					else if( 0==strcasecmp(str_hash, "MD6") )
-					{
-					}
-					else if( 0==strcasecmp(str_hash, "crc16") )
-					{
-					}
-					else if( 0==strcasecmp(str_hash, "crc16ksc") )
-					{
-					}
-					else if( 0==strcasecmp(str_hash, "crc16c") )
-					{
-					}
-					else if( 0==strcasecmp(str_hash, "crc32") )
-					{
-					}
-					else if( 0==strcasecmp(str_hash, "crc64") )
-					{
-					}
-					else if( 0==strcasecmp(str_hash, "crc64isc") )
-					{
+						printf("***OPTION** => [%s]  [%s]\n", str_hash, optarg);
 					}
 					else
 					{
@@ -389,6 +366,8 @@ int 	ii, jj;
 				if(optarg) 
 				{
 					memcpy(str_ignore, optarg, sizeof(str_ignore) );
+					printf("***OPTION** => [%s]  [%s]\n", str_ignore, optarg);
+
 				}
 
 				break;
@@ -397,7 +376,9 @@ int 	ii, jj;
 			case 'f' : /* convert float number to Hex-decial for using DR_GPS Trimble packet */
 				if(optarg) 
 				{
+					int idx = option_index;
 					memcpy(str_float, optarg, MAX_CHARS );
+					printf("***OPTION** => [%s]  [%s]\n", str_float, optarg);
 				}
 				else
 				{
@@ -440,13 +421,13 @@ int 	ii, jj;
 
 		    case 'A': /* convert mot2bin -> Motorola FORMAT family --- */
 				printf("\n");
-				printf(">>Hex family type : MOTOROLA family");
+				printf(">>Hex family type : MOTOROLA family \n");
 
 				break;
 				
 		    case 'L': /* convert intel2bin -> Intel FORMAT family --- */
 				printf("\n");
-				printf(">>Hex family type : Intel family");
+				printf(">>Hex family type : Intel family \n");
 				break;
 
 		    case 'n': /* --alignword : Address Alignment Word -> Intel family only --- */
@@ -461,10 +442,11 @@ int 	ii, jj;
 
 			case 'E': // --endian
 				if(optarg) 
-				{}
+				{
+				}
 				else
 				{
-					printf("\n\n WARNING:wrong option --endian [little|big]. check option\r\n");
+					printf("\n\n WARNING:wrong option --endian [little|big]. check option \n");
 			
 					exit(0);
 					return 0;
