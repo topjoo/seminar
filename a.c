@@ -3,6 +3,9 @@
 #include <memory.h>
 #include <stdlib.h>
 
+
+
+#include "att.h"
 #include "att.h"
 
 #define SQR(X) 			printf("==> The square of " #X " is %d.\n", ((X)*(X)))
@@ -35,6 +38,14 @@ short   s_c;
 char    ch;
 int 	*ipnt;
 int 	iarry[] = {11,21,31,41,51,61,71,81,91,111,120};
+int 	iarry2 /*[12]*/ [6][2] = { 
+			{11,21},
+			{31,41},
+			{51,61},
+			{71,81},
+			{91,111},
+			{120,150}
+};
 
 const   int aa = 5;
 volatile int bb = 5;
@@ -58,6 +69,7 @@ int 	ii, jj;
 		printf("TEST1*-TEST3=(%d) \n", TEST1 * -TEST3 );
 
 
+		printf(" iarry2=%d, iarry2=%d, iarry2=%d \n", *iarry2[3], iarry2[3][0], iarry2[1][1]);
 
 		i = 033;
 

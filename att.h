@@ -1,4 +1,6 @@
 
+//#pragma once
+
 #ifndef __ATTACHED_H__
 #define __ATTACHED_H__
 
@@ -16,7 +18,7 @@
 
 #define TEST7 		0
 
-#define TEST11 		1
+#define TEST11 		0
 
 
 
