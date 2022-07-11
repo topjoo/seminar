@@ -24,6 +24,12 @@
 #error Do Check TEST9 Logic
 #endif
 
+int 	foo1(unsigned char a)
+{
+	printf("foo1 = unsigned char = %d \n", a);
+	
+	return (a+a);
+}
 
 
 int 	main(int argc, char *argv[])
@@ -54,15 +60,30 @@ int 	ii, jj;
 
 
 
+#if TEST0
+{
+	char zStr[] = "abcdefgh";
+	int  ii = 0, iiMax;
+
+//	for(ii=0; ii<=strlen(zStr); ii++)
+
+	iiMax = strlen(zStr);
+	for(ii=0; ii<=iiMax; ii++)
+	{
+		printf("ii=%d => strlen()=%d  \n", ii, strlen(zStr) );
+	}
+
+
+}
+#endif
 
 #if TEST1
 	{
-	int 	i=0;
 	int     bb5;
 	int     a=9;
 	int 	res=0;
 
-
+		
 		printf("+++ Feature +++++ \n");
 		printf("TEST1(%d), -TEST2(%d), -TEST3(%d), -TEST4(%d),  TEST7(%d), TEST11(%d) \n", TEST1, -TEST2, -TEST3, -TEST4,  TEST7, TEST11);
 		printf("TEST1*-TEST2=(%d) \n", TEST1 * -TEST2 );
@@ -72,16 +93,18 @@ int 	ii, jj;
 		printf(" iarry2=%d, iarry2=%d, iarry2=%d \n", *iarry2[3], iarry2[3][0], iarry2[1][1]);
 
 		i = 033;
-
+		printf(" octal = %d ,  foo1 = %d \n", i, foo1(4U) );
 		printf("mul = %d / %d \n", MUL1(2,2), MUL2(2+1, 2+1) );
 
 		PRT(THIS IS TEST CODE);
 
-
+		printf("\n");
+		
 		bb = 55;
+		printf("i value =%d, const aa:%d,  bb:%d  --- \n", i, aa, bb);
 
-		if( ++i ) printf("i value =%d, aa:%d,  bb:%d\n", i, aa, bb);
-
+		printf("i value =%d, const aa:%d,  bb:%d  +++ \n", i, aa, bb);
+		
 		printf("ii =%d, jj=%d \n", ii, jj);
 
 		printf("============== %d \n", MY_MACRO_2(3,5));
