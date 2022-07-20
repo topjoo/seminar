@@ -15,7 +15,8 @@
 
 
 
-//#define TEST9 		0
+
+#define TEST9 		1
 
 #ifdef TEST9
 #error Do Check TEST9 Logic
