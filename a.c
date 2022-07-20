@@ -11,7 +11,7 @@
 
 #define INT_i(n)        int i##n = n;
 #define SUM(res, n)     ((res) += (i##n)); \
-						printf(" i%d = (%d) => SUM: %d \n", n, i##n, res);
+			printf(" i%d = (%d) => SUM: %d \n", n, i##n, res);
 
 
 
@@ -50,9 +50,10 @@ int 	iarry2 /*[12]*/ [6][2] = {
 			{120,150}
 };
 
+
+
 const   int aa = 5;
 volatile int bb = 5;
-
 int 	ii, jj;
 
 
