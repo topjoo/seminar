@@ -35,9 +35,9 @@ typedef unsigned char   CHAR;
 #define MUL1(a,b)		(a*b)
 #define MUL2(a,b)		((a)*(b))
 
-#define MY_MACRO_2(x,y)   x##y
+#define MY_MACRO_2(x,y)   	x##y
 
-#define MY_MACRO(x) #x
+#define MY_MACRO(x) 		#x
 
 #define MAX_CHARS 		16
 
