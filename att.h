@@ -17,7 +17,7 @@
 #define TEST3       0
 #define TEST4       0
 
-#define TEST7 		0
+#define TEST7 		1
 
 #define TEST11 		0
 
