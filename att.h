@@ -6,16 +6,17 @@
 
 #include <stdio.h>
 #include <unistd.h> /* for getopt() */
-#include <assert.h>	/* assert() */
+#include <assert.h> /* assert() */
 #include <getopt.h> /* getopt_long() */
 
-#define PI 			3.141592
+#define PI 		3.141592
 
 #define TEST0 		1
 #define TEST1 		0
 #define TEST2 		1
-#define TEST3       0
-#define TEST4       0
+#define TEST3       	0
+#define TEST4       	0
+
 
 #define TEST7 		1
 
