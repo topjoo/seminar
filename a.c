@@ -4,8 +4,6 @@
 #include <stdlib.h>
 
 
-
-#include "att.h"
 #include "att.h"
 
 #define SQR(X) 			printf("==> The square of " #X " is %d.\n", ((X)*(X)))
