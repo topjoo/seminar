@@ -15,11 +15,10 @@
 
 
 
-
 #define TEST9 		1
 
 #ifdef TEST9
-#error Do Check TEST9 Logic
+#error Do Check TEST9 Logic routine
 #endif
 
 int 	foo1(unsigned char a)
