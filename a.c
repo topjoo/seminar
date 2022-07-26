@@ -290,7 +290,7 @@ int 	ii, jj;
 	}
 	else
 	{
-		printf("\n\nThe File is NONE~~ \n");
+		printf("\n\nThe File (%s) Not found!! \n");
 	}
 
 
