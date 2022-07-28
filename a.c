@@ -790,7 +790,6 @@ int 	ii, jj;
 	printf("out = %d (%s) \n", out, (out?"ON":"OFF") );
 
 
-
 	while(1)
 	{
 		if( batt_cur==-9 ) break;
@@ -820,7 +819,6 @@ int 	ii, jj;
 
 	}
 }
-
 #endif
 
 
