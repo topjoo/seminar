@@ -16,11 +16,6 @@
 
 
 
-#define TEST9 		1
-
-#ifdef TEST9
-#error Do Check TEST9 Logic
-#endif
 
 int 	foo1(unsigned char a)
 {
@@ -769,6 +764,54 @@ int 	ii, jj;
 
 	}
 
+
+#endif
+
+
+#if TEST_HYSTERISYS
+{
+
+	int  out = 0;
+	int  batt_pre, batt_cur;
+
+
+	INPUT(batt_cur);
+	if( batt_cur <= VAL_THRESHOLD_LOW )      out=OUT_OFF;
+	else if( batt_cur > VAL_THRESHOLD_HIGH ) out=OUT_ON;
+
+	printf("out = %d (%s) \n", out, (out?"ON":"OFF") );
+
+
+
+	while(1)
+	{
+		if( batt_cur==-9 ) break;
+
+		batt_pre = batt_cur;
+		INPUT(batt_cur);
+
+		if( batt_cur <= VAL_THRESHOLD_LOW ) 
+		{
+			if( batt_pre < VAL_THRESHOLD_HIGH	)  out=OUT_OFF;
+			else if( batt_pre >= VAL_THRESHOLD_HIGH  ) out=OUT_ON;
+			else { printf("low check.. \n"); }
+			
+			printf("%15s -> pre_val (%3d) / cur_val (%3d) -> out(%s) \n", "VAL_LOW", batt_pre, batt_cur, (out?"ON":"OFF") );
+		}
+		else if( batt_cur > VAL_THRESHOLD_HIGH ) 
+		{
+			if( batt_pre < VAL_THRESHOLD_LOW  )  out=OUT_OFF;
+			else if( batt_pre >= VAL_THRESHOLD_LOW  ) out=OUT_ON;
+			else { printf("high check.. \n"); }
+			printf("%15s -> pre_val (%3d) / cur_val (%3d) -> out(%s) \n", "VAL_HIGH", batt_pre, batt_cur, (out?"ON":"OFF") );
+		}
+		else
+		{
+			printf("%15s -> pre_val (%3d) / cur_val (%3d) -> out(%s) \n", "VAL_HYSTERISYS", batt_pre, batt_cur, (out?"ON":"OFF") );	
+		}
+
+	}
+}
 
 #endif
 

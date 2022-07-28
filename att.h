@@ -14,14 +14,25 @@
 #define TEST0 		1
 #define TEST1 		0
 #define TEST2 		1
-#define TEST3       	0
-#define TEST4       	0
+#define TEST3       0
+#define TEST4       0
 
 
 #define TEST7 		1
 
 #define TEST11 		0
+#define TEST_HYSTERISYS 		1
 
+
+
+#define INPUT(a) 		printf("Voltage Val? "); \
+						scanf("%d", &a);
+
+#define VAL_THRESHOLD_LOW 			10
+#define VAL_THRESHOLD_HIGH 			15
+
+#define OUT_OFF 				0
+#define OUT_ON 					1
 
 
 
