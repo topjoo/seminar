@@ -15,7 +15,15 @@
 
 
 
+<<<<<<< HEAD
 
+=======
+#define TEST9 		1
+
+#ifdef TEST9
+#error Do Check TEST9 Logic routine
+#endif
+>>>>>>> main
 
 int 	foo1(unsigned char a)
 {
@@ -286,7 +294,7 @@ int 	ii, jj;
 	}
 	else
 	{
-		printf("\n\nThe File is NONE~~ \n");
+		printf("\n\nThe File (%s) Not found!! \n");
 	}
 
 

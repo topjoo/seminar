@@ -1,4 +1,3 @@
-
 //#pragma once
 
 #ifndef __ATTACHED_H__
