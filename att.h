@@ -10,17 +10,19 @@
 
 #define PI 		3.141592
 
-#define TEST0 		1
+#define TEST0 		0 //-1
 #define TEST1 		0
-#define TEST2 		1
+#define TEST2 		0 //-1
 #define TEST3       0
 #define TEST4       0
 
 
-#define TEST7 		1
+#define TEST7 		0 //-1
 
 #define TEST11 		0
 #define TEST_HYSTERISYS 		1
+
+////////////////////////////////////////////////////////////////////////
 
 
 

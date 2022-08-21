@@ -16,6 +16,29 @@
 
 
 
+int isFileExist(const char *file)
+{
+	struct	_finddatai64_t fexist;
+	long ret = 0L;
+	int  retValue = 0;
+
+	if(0==strcmp(file,"") || NULL==file) return 0;
+
+	if( (ret = _findfirsti64( file, &fexist )) == -1L )
+	{
+		retValue = 0; // File NOT Exist
+	}
+	else
+	{
+		retValue = 1; // FIle Exist
+	}
+	_findclose( ret );
+
+	printf("RETURN VALUE : %d -> [%s] -> %s  \n", retValue, file, retValue?"File Exist":"None File" );
+	return retValue;
+}
+
+
 
 int 	foo1(unsigned char a)
 {
@@ -52,6 +75,13 @@ const   int aa = 5;
 volatile int bb = 5;
 int 	ii, jj;
 
+
+#if 1 //FILE_CHECK
+
+	ii = isFileExist("./wifi.conf");
+	printf("%d = \n", ii);
+	
+#endif
 
 
 #if TEST0
